@@ -22,18 +22,12 @@ app.use(cors());
 // Routes
 const authRoutes = require('./routes/authRoutes');
 const profileRoutes = require('./routes/profileRoutes');
-const teamRoutes = require('./routes/teamRoutes');
-const chatRoutes = require('./routes/chatRoutes');
-const eventRoutes = require('./routes/eventRoutes');
-const messageRoutes = require('./routes/messageRoutes');
+
 
 
 app.use('/api/auth', authRoutes);
 app.use('/api/dashboard', profileRoutes);
-app.use('/api/teams', teamRoutes);
-app.use('/api/message', messageRoutes);
-app.use('/api/', chatRoutes);
-app.use('/api', eventRoutes);
+
 
 
 
