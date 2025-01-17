@@ -1,21 +1,24 @@
-import React from 'react';
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+// import './App.css'
+import NavBar from './components/navbar'
+import QuestionnaireList from './components/QuestionnaireList'
+import Footer from './components/footer'
+import Router from './components/router-structure'
 
-import { Outlet } from 'react-router-dom';
-import Navbar  from './components/Navbar';
 
 function App() {
+  const [count, setCount] = useState(0)
+
   return (
-    <>
     
-    <header>
-      <Navbar />
-    </header>
-    <main>
-        <h1>Hello </h1>
-        <Outlet />
-    </main>
+    <>
+    <Router/>
+    {/* <QuestionnaireList/>
+    <Footer/> */}
     </>
-  );
+  )
 }
 
-export default App;
+export default App
