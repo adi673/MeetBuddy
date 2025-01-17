@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bell, User, Play } from 'lucide-react';
+import { Bell, User, Play,SquareChevronDown } from 'lucide-react';
 
 // NavBar Component
 const NavBar = () => {
@@ -46,8 +46,8 @@ const QuestionnaireItem = ({ title, author, image }) => {
         </div>
       </div>
       <button className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-full hover:from-blue-600 hover:to-blue-700 transition-all duration-300 flex items-center space-x-2 shadow-lg">
-        <Play className="w-4 h-4" />
-        <span>Start</span>
+        <SquareChevronDown className="w-4 h-4" />
+        {/* <span>Start</span> */}
       </button>
     </div>
   );

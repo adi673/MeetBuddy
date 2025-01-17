@@ -33,7 +33,7 @@ const NavBar = () => {
         </Link>
         <Link to="/dashboard">
           <div className="w-10 h-10 rounded-full bg-gray-400 flex items-center justify-center">
-            <User className="h-9 w-9 text-gray-800" />
+            <User className="h-9 w-9 text-gray-800 hover:text-white " />
           </div>
         </Link>
         {token && (

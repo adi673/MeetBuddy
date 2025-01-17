@@ -2,7 +2,8 @@ import { useContext, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import FooterPage from '../components/FooterPage';
-import QuestionnaireList from '../components/QuestionnaireList';
+// import QuestionnaireList from '../components/QuestionnaireList';
+import Questionnaire from '../components/test_components/QuestionnaireList';
 import AuthContext from '../context/AuthContext';
 import Landing from '../pages/Landing';
 import Dashboard from '../pages/Dashboard';
@@ -22,9 +23,10 @@ function Router() {
         </Route>
         <Route path="/login" element={<Login />} />
         {/* Protected Routes */}
-        <Route element={<PrivateRoute />}>
+        {/* <Route element={<PrivateRoute />}>  uncomment it once backend attached Undo  */}
+        <Route element={<Layout />}>
           <Route path="/download" element={<Download />} />
-          <Route path="/survey" element={<QuestionnaireList />} />
+          <Route path="/survey" element={<Questionnaire />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/notifications" element={<Notifications />} />
         </Route>
