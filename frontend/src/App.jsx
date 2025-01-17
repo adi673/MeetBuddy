@@ -2,10 +2,11 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 // import './App.css'
-import NavBar from './components/navbar'
+import NavBar from './components/NavBar'
 import QuestionnaireList from './components/QuestionnaireList'
-import Footer from './components/footer'
-import Router from './components/router-structure'
+import Footer from './components/FooterPage'
+import Router from './routes/Router'
+import { AuthProvider } from './context/AuthContext';
 
 
 function App() {
@@ -14,7 +15,9 @@ function App() {
   return (
     
     <>
-    <Router/>
+    <AuthProvider>
+      <Router />
+    </AuthProvider>
     {/* <QuestionnaireList/>
     <Footer/> */}
     </>

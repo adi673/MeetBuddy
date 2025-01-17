@@ -1,9 +1,18 @@
-import React from 'react';
-import { Bell, User } from 'lucide-react';
-import { NavButton } from './navButton';
-import { Link } from "react-router-dom";
+import React, { useContext } from 'react';
+import { Bell, User, LogOut } from 'lucide-react';
+import { NavButton } from './NavButton';
+import { Link, useNavigate } from "react-router-dom";
+import AuthContext from '../context/AuthContext';
 
 const NavBar = () => {
+  const { token, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
+
   return (
     <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 p-4 flex items-center justify-between shadow-lg">
       <div className="flex items-center space-x-8">
@@ -27,6 +36,11 @@ const NavBar = () => {
             <User className="h-9 w-9 text-gray-800" />
           </div>
         </Link>
+        {token && (
+          <button onClick={handleLogout}>
+            <LogOut className="h-9 w-9 text-gray-300 hover:text-red-500 cursor-pointer" />
+          </button>
+        )}
       </div>
     </div>
   );
