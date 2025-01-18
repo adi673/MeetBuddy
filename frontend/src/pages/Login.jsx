@@ -16,22 +16,31 @@ const AuthForms = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  useEffect(()=>{
+  
     const loginUser= async ()=>{
-      if(Proceed){
+     
+        console.log("in proceed")
         try {
+          console.log(" in try")
+          console.log(isLogin)
           let response = null;
           if(isLogin){
             response = await axios.post('http://localhost:3001/api/auth/login', {
               Email,
               Password
             });
+            
           }else{
-            if(Password == ConfirmPassword ){
+            console.log("Checking password")
+            if(Password === ConfirmPassword ){
+              console.log("Checked password")
+              console.log("checked both passwords")
+              
               response = await axios.post('http://localhost:3001/api/auth/register', {
                 Email,
-                Password,Name,LastName,
+                Password,ConfirmPassword,Name,LastName,
               });
+              console.log("after response")
             }else {
               console.error("Passwords do not match");
               return;
@@ -48,26 +57,16 @@ const AuthForms = () => {
             throw new Error("Invalid response from server");
           }
         } catch (error) {
-          console.error("Login failed:", error.response?.data || error.message);
-        } finally {
-          setShouldLogin(false);  // Reset to prevent continuous login attempts
-        }
-      }
+          // console.log("Login failed:", error.response?.data || error.message);  // ✅ Correct
+        } 
+      
     }
-    loginUser();
-  },[isLogin,Email, Password, login, navigate]) 
-  //  Auto-Login on Page Refresh:
-  // When the app reloads, useEffect checks if a token exists in localStorage.
-  // If a token exists, it calls updateToken to restore the user's session.
-
-//   Why Use navigate in useEffect?
-// Auto-Redirect After Login:
-// Once the user logs in and the token is updated, navigate can automatically redirect the user to the dashboard or a protected route.
-// This eliminates the need for manual redirection.
+  
 
   function Submit(e){
     e.preventDefault();
-    setProceed(true);
+    console.log("came here")
+    loginUser()
   }
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 flex items-center justify-center p-4">
@@ -101,7 +100,7 @@ const AuthForms = () => {
                   <input
                     type="text"LastName
                     placeholder="Enter last name"
-                    onChange={(e)=>set(e.target.value)}
+                    onChange={(e)=>setLastName(e.target.value)}
                     // className="w-full p-2 rounded bg-navy-700/50 border border-navy-600 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-blue-500 transition-colors"
                   />
@@ -142,6 +141,7 @@ const AuthForms = () => {
             )}
              
             <button 
+            onClick={Submit}
               type="submit"
               className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded transition-colors space-y-2"
             >

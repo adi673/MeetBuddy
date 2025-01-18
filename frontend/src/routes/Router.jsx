@@ -23,8 +23,8 @@ function Router() {
         </Route>
         <Route path="/login" element={<Login />} />
         {/* Protected Routes */}
-        {/* <Route element={<PrivateRoute />}>  uncomment it once backend attached Undo  */}
-        <Route element={<Layout />}>
+        <Route element={<PrivateRoute />}>  
+        {/* <Route element={<Layout />}> */}
           <Route path="/download" element={<Download />} />
           <Route path="/survey" element={<Questionnaire />} />
           <Route path="/dashboard" element={<Dashboard />} />
