@@ -28,6 +28,7 @@ exports.register = async (req, res) => {
 
         // Generate JWT token
         const token = generateToken(user);
+        console.log("token Sent frontned register :", token)
         console.log(token)
         // res.cookie('token', token, { httpOnly: true });
         res.cookie('token', token, { httpOnly: true, secure: true });
@@ -62,7 +63,7 @@ exports.login = async (req, res) => {
 
         // Generate JWT token
         const token = generateToken(user);
-
+        console.log("token Sent frontned login :", token)
         // res.cookie('token', token, { httpOnly: true });
         res.cookie('token', token, { httpOnly: true, secure: true });
 

@@ -35,7 +35,10 @@ app.use('/api/question', questionRoutes);
 app.get('/',(req,res)=>{
     res.send("hello ons lash route");
 })
-
+app.post('/api/test', (req,res)=>{
+    console.log(req.body);
+    res.send("hello ons lash route");
+})
 app.get('/posts', (req, res) => {
     res.send('Hello World');
 });

@@ -11,7 +11,7 @@ import Notifications from '../pages/Notifications';
 import Download from '../pages/Download';
 import Error from '../components/Error';
 import Login from '../pages/Login';  // ✅ Import Login Page
-
+import { UserAnswersProvider } from '../context/UserAnswersContext';
 function Router() {
   return (
     <BrowserRouter>
@@ -56,7 +56,9 @@ function Layout() {
         <NavBar />
       </div>
       <main className="flex-grow min-h-[90vh]">
+      <UserAnswersProvider> 
         <Outlet />
+        </UserAnswersProvider>
       </main>
       <FooterPage />
     </div>
